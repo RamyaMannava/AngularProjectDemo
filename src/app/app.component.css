@@ -1,0 +1,20 @@
+p {
+    font-family: Lato;
+  }
+  .images {
+    min-width:40%;
+    max-width:50%;
+    min-height: 10px;
+    
+  margin-top:4rem;
+  }
+  .search-card-inner{
+      display: flex;
+  }
+  .ng-valid[required], .ng-valid.required  {
+    border-left: 5px solid #42A948; /* green */
+  }
+  
+  .ng-invalid:not(form)  {
+    border-left: 5px solid #a94442; /* red */
+  }

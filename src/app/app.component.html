@@ -1,0 +1,56 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<div class="logo">
+  <div fxLayout="row" fxLayoutGap="6px" fxLayoutAlign="space-between center" class="detail-container">
+    <div fxLayout="column">
+      <img src="../assets/logo.png"/>
+      <div class="form-group">
+        <label>Filter By Price</label>
+        <input id="minimumPrice" name="minimumPrice" class="form-control"
+      required [(ngModel)]="minprice" #minimumPrice="ngModel" placeholder="Minimum Price" >
+
+<div *ngIf="minimumPrice.invalid && (minimumPrice.dirty || minimumPrice.touched)"
+    class="alert alert-danger">
+  <div *ngIf="minimumPrice.errors.required">
+    MinimumPrice is required.
+  </div>  
+  
+  </div>
+  <div *ngIf="isMinPriceInvalid">
+    {{minPriceErrorMsg}}
+   </div>
+  <input id="maximumPrice" name="maximumPrice" class="form-control"
+  required [(ngModel)]="maxprice" #maximumPrice="ngModel" placeholder="Maximum Price" >
+
+<div *ngIf="maximumPrice.invalid && (maximumPrice.dirty || maximumPrice.touched)"
+class="alert alert-danger">
+
+<div *ngIf="maximumPrice.errors.required">
+MaximumPrice is required.
+</div>
+</div>
+<div *ngIf="isMaxPriceInvalid">
+  {{maxPriceErrorMsg}}
+ </div>
+      </div>
+    
+      <button class="btn" (click) = applyFilter();>Filter</button>
+      </div>
+  </div>
+</div>
+ 
+<div class="search-card-container">
+    <div *ngFor="let data of searchResults" fxLayout="row wrap" fxLayoutAlign="center start" fxLayoutAlign.gt-xs="start start" class="search-card-inner">
+      <div fxLayout="row" fxLayoutGap="6px" fxLayoutAlign="space-between center" class="detail-container">
+<div fxLayout="column" class="detail-inner" >
+<img src = {{data.finalurl}} class = "images"/>
+<p><b>{{data.assetName}}</b></p>
+<p>{{data.brandName}}</p>
+<p class="price">Price: {{data.minPrice}} - {{data.maxPrice}}<span>MSRP</span></p>
+</div>
+    </div>
+  </div>
+</div>
+
+
+<router-outlet></router-outlet>
